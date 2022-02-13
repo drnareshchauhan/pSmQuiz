@@ -9,3 +9,7 @@
 #views {
     display: none;
 }
+main {
+    max-width: 900px;
+    margin: auto;
+}

@@ -14,7 +14,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 150%;
 }
 
@@ -159,7 +159,9 @@ footer {
 
 .hero {
     background-image: url('/assets/pattern.png');
-    padding: 64px;
+    padding: 4rem;
+    display: flex;
+    flex: 0 1 40vw;
 }
 
 .splash {
@@ -218,4 +220,11 @@ footer {
 
 .block {
     display: block;
+}
+.quiz_timer {
+    display: flex;
+    align-items: center;
+    background-color: #341f97;
+    color: white;
+    padding: 0 30px;
 }

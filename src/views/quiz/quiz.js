@@ -1,7 +1,22 @@
 import { cubeLoader } from '../common/loader.js';
 import { submitSolution } from '../../api/data.js';
 import { html, classMap, styleMap } from '../../lib.js';
-
+let dt = new Date(new Date().setTime(0));
+let time = dt.getTime();
+let seconds = Math.floor((time % (100 * 60)) / 1000);
+let minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
+let timex = 0;
+let myTime = setInterval(function () {
+    if (seconds < 59) {
+        seconds++;
+    } else {
+        minutes++;
+        seconds = 0;
+    }
+    let formattedSec = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    let formattedMin = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    document.querySelector('.time').innerHTML = `${formattedMin} : ${formattedSec}`;
+}, 1000);
 const quizTemplate = (quiz, questions, answers, currentIndex, onSelect, onSubmit, resetQuiz) => html`
     <section id="quiz">
         <header class="pad-large">
@@ -10,6 +25,9 @@ const quizTemplate = (quiz, questions, answers, currentIndex, onSelect, onSubmit
                 <span class="block">Question index</span>
                 ${questions.map((q, i) => indexTemplate(quiz.objectId, i, i === currentIndex, answers[i] !== undefined))}
             </nav>
+            <div class="quiz_timer">
+                <span class="time"><i class="fa fa-clock-o" style="font-size:24px">00:00</i></span>
+            </div>
         </header>
         <div class="pad-large alt-page">
             <article class="question">
