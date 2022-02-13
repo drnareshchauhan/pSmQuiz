@@ -1,0 +1,30 @@
+{
+    "name": "quiz-time",
+    "version": "1.0.0",
+    "description": "Application for creating, running, and completing tests with free access.",
+    "main": "index.html",
+    "scripts": {
+        "test": "mocha tests",
+        "start": "http-server -a localhost -p 3000 -P http:localhost:3000?"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/quizzestime/quizzestime.github.io"
+    },
+    "author": "InnerPulse",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/quizzestime/quizzestime.github.io/issues"
+    },
+    "homepage": "https://quizzestime.github.io",
+    "dependencies": {
+        "browser-sync": "^2.27.7",
+        "lit-html": "^1.3.0",
+        "page": "^1.11.6"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "printWidth": 155,
+        "singleQuote": true
+    }
+}
