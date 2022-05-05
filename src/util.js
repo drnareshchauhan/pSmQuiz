@@ -5,6 +5,14 @@ const categories = {
     it: 'National Health Programme',
     OH: 'Occupational Health',
     InfDz: 'Infectious Disease',
+    ReaS: 'Research',
+    Demo: 'Demography Family Planning',
+    NCd: 'NCD',
+    NutRi: 'Nutrition',
+    SociO: 'Sociology',
+    VaCcine: 'Vaccine',
+    other: 'Others',
+    rch: 'RCH NRHM',
 };
 
 function getUserData() {
