@@ -9,7 +9,7 @@ const template = (isLogged) => html`
         <div class="hero layout">
             <div class="splash right-col"><i class="fas fa-clipboard-list"></i></div>
             <div class="glass welcome">
-                <h1>Welcome to pSm Quiz!</h1>
+                <h1>Welcome to psmgmcs!</h1>
                 ${until(loadStats(), lineLoader())} ${isLogged ? null : html`<a class="action cta" href="/login">Sign in to create a quiz</a>`}
             </div>
         </div>
