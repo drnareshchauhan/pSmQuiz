@@ -6,7 +6,7 @@
     "scripts": {
         "test": "mocha tests",
         "start": "http-server -a localhost -p 3000 -P http:localhost:3000?",
-        "build": "build --output public"
+        "build": "[Other] build --output public"
     },
     "repository": {
         "type": "git",
