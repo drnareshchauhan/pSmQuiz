@@ -162,6 +162,7 @@ footer {
     padding: 4rem;
     display: flex;
     flex: 0 1 40vw;
+    overflow: auto;
 }
 
 .splash {
