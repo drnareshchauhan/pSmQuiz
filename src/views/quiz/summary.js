@@ -1,5 +1,7 @@
 import { html } from '../../lib.js';
-
+const roundToTwo = (num) => {
+    return +(Math.round(num + 'e+2') + 'e-2');
+};
 const template = (quiz, result, answers, questions, retakeQuiz, answersReview, showQuestionDetails) => html`
     <section id="summary">
         <div class="hero layout">
@@ -122,7 +124,7 @@ export default async function summaryPage(ctx) {
                 {
                     correct,
                     total: questions.length,
-                    percent: (correct / questions.length) * 100,
+                    percent: roundToTwo(correct / questions.length) * 100,
                 },
                 answers,
                 questions,

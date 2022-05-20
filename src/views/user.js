@@ -5,7 +5,9 @@ import { getUserData as getUserDataAPI, deleteQuiz } from '../api/data.js';
 import { getSolutionsByUserId, getQuizzesByUserId, getQuizByQuizId, getSolutionsCount } from '../api/data.js';
 
 const template = (update) => html`${until(update(), cubeLoader())}`;
-
+const roundToTwo = (num) => {
+    return +(Math.round(num + 'e+2') + 'e-2');
+};
 const quizTemplate = ({ title, category, questionCount, objectId }, quizTakenTimes, isProfileOwner, onDelete) => html`
     <article class="preview layout">
         <div class="right-col">
@@ -87,11 +89,11 @@ export default async function userPage(ctx) {
                                               <a href=${'/details/' + data.userLastCompleteQuiz.objectId}>${data.userLastCompleteQuiz.title}</a>
                                           </td>
                                           <td
-                                              class="${(data.userLastSolution.correct / data.userLastSolution.total) * 100 < 50
+                                              class="${roundToTwo(data.userLastSolution.correct / data.userLastSolution.total) * 100 < 50
                                                   ? 'cell-3 s- failed'
                                                   : 'cell-3 s-correct'}"
                                           >
-                                              ${(data.userLastSolution.correct / data.userLastSolution.total) * 100}%
+                                              ${roundToTwo(data.userLastSolution.correct / data.userLastSolution.total) * 100}%
                                           </td>
                                           <td
                                               class="${data.userLastSolution.total / 2 > data.userLastSolution.correct
