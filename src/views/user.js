@@ -89,11 +89,11 @@ export default async function userPage(ctx) {
                                               <a href=${'/details/' + data.userLastCompleteQuiz.objectId}>${data.userLastCompleteQuiz.title}</a>
                                           </td>
                                           <td
-                                              class="${roundToTwo(data.userLastSolution.correct / data.userLastSolution.total) * 100 < 50
+                                              class="${roundToTwo((data.userLastSolution.correct / data.userLastSolution.total) * 100) < 50
                                                   ? 'cell-3 s- failed'
                                                   : 'cell-3 s-correct'}"
                                           >
-                                              ${roundToTwo(data.userLastSolution.correct / data.userLastSolution.total) * 100}%
+                                              ${roundToTwo((data.userLastSolution.correct / data.userLastSolution.total) * 100)}%
                                           </td>
                                           <td
                                               class="${data.userLastSolution.total / 2 > data.userLastSolution.correct

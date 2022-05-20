@@ -124,7 +124,7 @@ export default async function summaryPage(ctx) {
                 {
                     correct,
                     total: questions.length,
-                    percent: roundToTwo(correct / questions.length) * 100,
+                    percent: roundToTwo((correct / questions.length) * 100),
                 },
                 answers,
                 questions,
