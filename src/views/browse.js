@@ -8,14 +8,16 @@ const template = (ctx, searchParams, title, category) => html`
     <section id="browse">
         <header class="pad-large">
             <form @submit=${(e) => onSearch(e, ctx)} class="browse-filter">
-                <input class="input" type="text" name="query" />
+                <input class="input" type="text" name="query" placeholder="leave blank to search cate" />
                 <select class="input" name="topic">
                     <option value="all">All Categories</option>
                     ${populateCategories()}
                 </select>
                 <button class="input submit action">Search</button>
             </form>
+
             <h1>All quizzes</h1>
+            <h6>leave blank to select category</h6>
         </header>
 
         ${until(loadQuizzes(searchParams, title, category), cubeLoader())}
@@ -57,9 +59,9 @@ function onSearch(e, ctx) {
     const title = formData.get('query').trim().toLowerCase();
     const category = formData.get('topic').trim().toLowerCase();
 
-    if (title === '') {
-        return alert("Search field can't be empty!");
-    }
+    // if (title === '') {
+    //     return alert("Search field can't be empty!");
+    // }
 
     ctx.render(template(ctx, true, title, category));
 }
