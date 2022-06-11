@@ -60,7 +60,7 @@ function onSearch(e, ctx) {
     const category = formData.get('topic').trim().toLowerCase();
 
     // if (title === '') {
-    //     return alert("Search field can't be empty!");
+    //     return alert("Enter title for more specific search!");
     // }
 
     ctx.render(template(ctx, true, title, category));

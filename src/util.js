@@ -11,8 +11,14 @@ const categories = {
     nutrition: 'Nutrition',
     sociology: 'Sociology',
     vaccine: 'Vaccine',
-    other: 'Others',
+
     rch: 'RCH NRHM',
+    history: 'History',
+    health: 'Health and Diseases',
+    screening: 'Screening',
+    obstetricsPaediatricsGeriatrics: 'Obstetrics Paediatrics and Geriatrics',
+    bmwHealth: 'BMW Health Education International Health',
+    other: 'Miscellaneous',
 };
 
 function getUserData() {
