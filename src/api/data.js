@@ -59,7 +59,7 @@ export async function getQuizzesByUserId(userId) {
 }
 
 export async function getMostRecent() {
-    const quiz = (await api.get(host + '/classes/Quiz?order=-createdAt&limit=1')).results[0];
+    const quiz = (await api.get(host + '/classes/Quiz?order=-createdAt&limit=5')).results[0];
     if (quiz) {
         const taken = await getSolutionsCount([quiz.objectId]);
         quiz.taken = taken[quiz.objectId];
@@ -69,6 +69,10 @@ export async function getMostRecent() {
 
 export async function getStats() {
     return (await api.get(host + '/classes/Quiz?count=1&limit=0')).count;
+}
+//question count
+export async function countQuest() {
+    return (await api.get(host + '/classes/Question?count=1&limit=0')).count;
 }
 
 // Question collection

@@ -1,7 +1,7 @@
 import { html, until } from '../lib.js';
 import { categories } from '../util.js';
 import { quizTemplate } from './common/quiz-preview.js';
-import { getMostRecent, getStats } from '../api/data.js';
+import { getMostRecent, getStats, countQuest } from '../api/data.js';
 import { cubeLoader, lineLoader } from './common/loader.js';
 
 const template = (isLogged) => html`
@@ -19,8 +19,12 @@ const template = (isLogged) => html`
 
 async function loadStats() {
     const stats = await getStats();
+    const quesStats = await countQuest();
 
-    return html`<p>Home to ${stats} quizzes in ${Object.keys(categories).length} categories. <a href="/browse">Browse all quizzes</a>.</p>`;
+    return html`<p>
+        Home to <b> ${quesStats} MCQs </b> in ${stats} Topics in ${Object.keys(categories).length} categories.<br />
+        <a href="/browse">Browse all quizzes</a>.
+    </p>`;
 }
 
 async function loadRecent() {

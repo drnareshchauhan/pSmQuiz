@@ -180,8 +180,8 @@ footer {
 .welcome {
     padding: 32px;
     font-size: 125%;
-    margin-right: 200px;
-    height: 220px;
+    /* margin-right: 200px; */
+    height: 250px;
 }
 
 .welcome p {
