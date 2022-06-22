@@ -4,7 +4,7 @@ const host = 'https://parseapi.back4app.com';
 
 api.settings.host = host;
 api.settings.appId = '6a6lubgUO6T7g694JQwKYUG97zsEx1OBLqThxl6P';
-api.settings.apiKey = 's5Juhn2dEuqWeNeaaRBTO12TFoETLnjC2I9Ds43S';
+api.settings.apiKey = 'QyS129JTVw8dx5vCp0QaVDDsx2mAroZ6V02Qczsc';
 
 export const login = api.login;
 export const logout = api.logout;
