@@ -5,7 +5,7 @@ import { setUserData, clearUserData, getUserData } from '../util.js';
 export const settings = {
     host: 'https://parseapi.back4app.com',
     appId: '6a6lubgUO6T7g694JQwKYUG97zsEx1OBLqThxl6P',
-    apiKey: 's5Juhn2dEuqWeNeaaRBTO12TFoETLnjC2I9Ds43S',
+    apiKey: 'QyS129JTVw8dx5vCp0QaVDDsx2mAroZ6V02Qczsc',
 };
 
 export async function get(url) {
@@ -70,6 +70,7 @@ async function request(url, options) {
 
         if (response.ok === false) {
             const err = await response.json();
+
             throw new Error(err.error);
         }
 
