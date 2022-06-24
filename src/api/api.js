@@ -58,6 +58,7 @@ function getOptions(method = 'get', body) {
 
     if (body) {
         options.headers['Content-Type'] = 'application/json';
+
         options.body = JSON.stringify(body);
     }
 
@@ -67,13 +68,15 @@ function getOptions(method = 'get', body) {
 async function request(url, options) {
     try {
         const response = await fetch(url, options);
-
-        if (response.ok === false) {
-            const err = await response.json();
-
-            throw new Error(err.error);
+        // if (response.ok === false) {
+        //     const err = await response.json();
+        //     console.log(err);
+        //     throw new Error(err.error);
+        // }
+        if (!response.ok) {
+            // Don't forget this part!
+            throw new Error(`HTTP error ${response.status}`);
         }
-
         return await response.json();
     } catch (err) {
         if (err.message === 'Invalid session token' || err.message === 'Session token is expired.') {

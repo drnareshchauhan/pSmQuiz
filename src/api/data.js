@@ -43,8 +43,10 @@ export async function updateQuiz(id, quiz) {
 
 export async function getQuizzes() {
     const quizzes = (await api.get(host + '/classes/Quiz')).results; // empty array if none
-    const timesTaken = quizzes.length ? await getSolutionsCount(quizzes.map((q) => q.objectId)) : null;
-    quizzes.forEach((q) => (q.taken = timesTaken[q.objectId]));
+
+    // const timesTaken = quizzes.length ? await getSolutionsCount(quizzes.map((q) => q.objectId)) : null;
+
+    // quizzes.forEach((q) => (q.taken = timesTaken[q.objectId]));
     return quizzes.length ? quizzes : null;
 }
 
@@ -120,6 +122,7 @@ export async function submitSolution(quizId, solution) {
 
 export async function getSolutionsCount(quizIds) {
     const query = JSON.stringify({ $or: quizIds.map((id) => ({ quiz: createPointer('Quiz', id) })) });
+
     const solutions = (await api.get(host + '/classes/Solution?where=' + encodeURIComponent(query))).results; // empty array if none
 
     if (solutions.length === 0) {
