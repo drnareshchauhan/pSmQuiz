@@ -47,6 +47,7 @@ export async function getQuizzes() {
     // const timesTaken = quizzes.length ? await getSolutionsCount(quizzes.map((q) => q.objectId)) : null;
 
     // quizzes.forEach((q) => (q.taken = timesTaken[q.objectId]));
+
     return quizzes.length ? quizzes : null;
 }
 
@@ -68,7 +69,38 @@ export async function getMostRecent() {
     }
     return quiz;
 }
-
+export async function getMostRecent2() {
+    const quiz = (await api.get(host + '/classes/Quiz?order=-createdAt&limit=5')).results[1];
+    if (quiz) {
+        const taken = await getSolutionsCount([quiz.objectId]);
+        quiz.taken = taken[quiz.objectId];
+    }
+    return quiz;
+}
+export async function getMostRecent3() {
+    const quiz = (await api.get(host + '/classes/Quiz?order=-createdAt&limit=5')).results[2];
+    if (quiz) {
+        const taken = await getSolutionsCount([quiz.objectId]);
+        quiz.taken = taken[quiz.objectId];
+    }
+    return quiz;
+}
+export async function getMostRecent4() {
+    const quiz = (await api.get(host + '/classes/Quiz?order=-createdAt&limit=5')).results[3];
+    if (quiz) {
+        const taken = await getSolutionsCount([quiz.objectId]);
+        quiz.taken = taken[quiz.objectId];
+    }
+    return quiz;
+}
+export async function getMostRecent5() {
+    const quiz = (await api.get(host + '/classes/Quiz?order=-createdAt&limit=5')).results[4];
+    if (quiz) {
+        const taken = await getSolutionsCount([quiz.objectId]);
+        quiz.taken = taken[quiz.objectId];
+    }
+    return quiz;
+}
 export async function getStats() {
     return (await api.get(host + '/classes/Quiz?count=1&limit=0')).count;
 }
@@ -132,13 +164,13 @@ export async function getSolutionsCount(quizIds) {
             }
             return a;
         }, {});
-    }
-    return solutions.reduce((a, c) => {
-        const id = c.quiz.objectId;
-        if (!a[id]) {
-            a[id] = 0;
-        }
-        a[id]++;
-        return a;
-    }, {});
+    } else
+        return solutions.reduce((a, c) => {
+            const id = c.quiz.objectId;
+            if (!a[id]) {
+                a[id] = 0;
+            }
+            a[id]++;
+            return a;
+        }, {});
 }

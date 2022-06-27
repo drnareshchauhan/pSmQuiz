@@ -1,7 +1,7 @@
 import { html, until } from '../lib.js';
 import { categories } from '../util.js';
 import { quizTemplate } from './common/quiz-preview.js';
-import { getMostRecent, getStats, countQuest } from '../api/data.js';
+import { getMostRecent, getMostRecent2, getMostRecent3, getMostRecent4, getMostRecent5, getStats, countQuest } from '../api/data.js';
 import { cubeLoader, lineLoader } from './common/loader.js';
 
 const template = (isLogged) => html`
@@ -29,11 +29,21 @@ async function loadStats() {
 
 async function loadRecent() {
     const recent = await getMostRecent();
+    const recent2 = await getMostRecent2();
+    const recent3 = await getMostRecent3();
+    const recent4 = await getMostRecent4();
+    const recent5 = await getMostRecent5();
 
     return html`
         <div class="pad-large alt-page">
-            <h2>Our most recent quiz:</h2>
+            <h2>Latest five Quizzes :</h2>
             ${recent ? quizTemplate(recent) : html` <p>No quizzes yet. Be the first to create one!</p>`}
+        </div>
+        <div class="pad-large alt-page">${recent ? quizTemplate(recent2) : html` <p>No quizzes yet. Be the first to create one!</p>`}</div>
+        <div class="pad-large alt-page">${recent ? quizTemplate(recent3) : html` <p>No quizzes yet. Be the first to create one!</p>`}</div>
+        <div class="pad-large alt-page">${recent ? quizTemplate(recent4) : html` <p>No quizzes yet. Be the first to create one!</p>`}</div>
+        <div class="pad-large alt-page">
+            ${recent ? quizTemplate(recent5) : html` <p>No quizzes yet. Be the first to create one!</p>`}
             <div>
                 <a class="action cta" href="/browse">Browse all quizzes</a>
             </div>

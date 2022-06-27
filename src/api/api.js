@@ -68,15 +68,12 @@ function getOptions(method = 'get', body) {
 async function request(url, options) {
     try {
         const response = await fetch(url, options);
-        // if (response.ok === false) {
-        //     const err = await response.json();
-        //     console.log(err);
-        //     throw new Error(err.error);
-        // }
         if (!response.ok) {
-            // Don't forget this part!
-            throw new Error(`HTTP error ${response.status}`);
+            const err = await response.json();
+            console.log(err);
+            throw new Error(err.error);
         }
+
         return await response.json();
     } catch (err) {
         if (err.message === 'Invalid session token' || err.message === 'Session token is expired.') {
